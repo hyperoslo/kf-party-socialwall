@@ -1,0 +1,8 @@
+# Ignore Node modules installed using npm
+node_modules
+
+# CSS files are auto-generated from Stylus
+public/stylesheets/*.css
+
+# Most vendor styles are installed using Bower
+public/vendor/*

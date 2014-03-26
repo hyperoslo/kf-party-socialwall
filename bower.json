@@ -1,0 +1,16 @@
+{
+  "name": "kf-party-socialwall",
+  "version": "0.1.0",
+  "authors": [
+    "Elvis Nuñez <elvis@hyper.no>",
+    "Sindre Moen <sindre@hyper.no>"
+  ],
+  "description": "A social wall for the KF party hosted at our place.",
+  "main": "app.js",
+  "license": "MIT",
+  "homepage": "http://kf-party-socialwall.herokuapp.com",
+  "private": true,
+  "dependencies": {
+    "normalize-css": "~3.0.0"
+  }
+}
