@@ -18,7 +18,7 @@ app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', routes.index);
-app.get('/subscribe', routes.subscribe);
+app.get('/callback', routes.subscribe);
 app.post('/callback', routes.callback);
 
 /// catch 404 and forwarding to error handler
