@@ -3,6 +3,7 @@ var http = require('http');
 var path = require('path');
 
 var routes = require('./routes');
+var figaro = require('figaro');
 
 var app = express();
 

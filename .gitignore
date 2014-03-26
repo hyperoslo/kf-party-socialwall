@@ -6,3 +6,6 @@ public/stylesheets/*.css
 
 # Most vendor styles are installed using Bower
 public/vendor/*
+
+# Ignore application secrets
+figaro.json
