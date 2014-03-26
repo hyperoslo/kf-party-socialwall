@@ -1,10 +1,6 @@
 var express = require('express.io');
 var http = require('http');
 var path = require('path');
-var favicon = require('static-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
 
 var routes = require('./routes');
 
@@ -14,14 +10,8 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-app.use(favicon());
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded());
-app.use(cookieParser());
 app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(app.router);
 
 app.get('/', routes.index);
 
@@ -55,5 +45,9 @@ app.use(function(err, req, res, next) {
 });
 
 app.http().io();
+
+app.io.route('ready', function(req) {
+  req.io.emit('message', { message: 'This is a message.' });
+});
 
 module.exports = app;
