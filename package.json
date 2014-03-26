@@ -17,6 +17,7 @@
     "static-favicon": "~1.0.0",
     "stylus": "0.42.3",
     "socket.io": "^0.9.16",
+    "instagram-node-lib": "^0.1.1",
     "figaro": "^0.1.9"
   }
 }

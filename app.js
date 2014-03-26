@@ -4,8 +4,11 @@ var path = require('path');
 
 var routes = require('./routes');
 var figaro = require('figaro');
+var instagram = require('instagram-node-lib');
 
 var app = express();
+
+app.http().io();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -15,6 +18,7 @@ app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', routes.index);
+app.post('/callback', routes.callback);
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
@@ -45,7 +49,13 @@ app.use(function(err, req, res, next) {
   });
 });
 
-app.http().io();
+// Configure Instagram lib
+figaro.parse('figaro.json', function() {
+  instagram.set('client_id', process.env.INSTAGRAM_CLIENT_ID);
+  instagram.set('client_secret', process.env.INSTAGRAM_CLIENT_SECRET);
+  instagram.set('callback_url', process.env.INSTAGRAM_CALLBACK_URL);
+  instagram.set('redirect_url', process.env.INSTAGRAM_REDIRECT_URL);
+});
 
 app.io.route('ready', function(req) {
   req.io.emit('message', { message: 'This is a message.' });
