@@ -1,4 +1,4 @@
-var express = require('express');
+var express = require('express.io');
 var http = require('http');
 var path = require('path');
 var favicon = require('static-favicon');
@@ -54,5 +54,6 @@ app.use(function(err, req, res, next) {
   });
 });
 
+app.http().io();
 
 module.exports = app;
